@@ -1,20 +1,37 @@
 function navbar() {
   return (
     <div>
-      <nav className="flex flex-col w-full px-6 py-4 bg-white shadow sm:flex-row sm:text-left sm:justify-between sm:items-baseline">
-        <div className="mb-2 sm:mb-0">
-          <a href="/home" className="text-xl no-underline duration-300 text-grey-darkest hover:text-blue-dark hover:font-bold">Home</a>
-        </div>
-        <div className='text-lg font-light hover:text-blue-dark'>
-          <a href="/pass" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">p.Admin</a>
-          <a href="/customerPass" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">cus.Pass</a>
-        </div>
-        <div className="grid grid-cols-2 gap-1">
-          <div class="flex flex-col sm:flex-row sm:text-left sm:justify-between">
-            <button class="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign Up</button>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:text-left sm:justify-between">
-            <button class="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign In</button>
+      <nav class="bg-blue-600">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="pt-2 flex justify-between">
+            <div class="flex space-x-4">
+              <div>
+                <p href="4" class="flex items-center py-3 px-2 text-white hover:text-gray-900">
+                  <svg class="h-6 w-6 mr-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                  </svg>
+                  <span class="font-bold" type="button">Currier Mate</span>
+                </p>
+              </div>
+              <div class="hidden md:flex items-center space-x-1">
+                <p type="button" href="4" class="py-3 px-3 text-white hover:text-gray-900">Features</p>
+                <p type="button" href="4" class="py-3 px-3 text-white hover:text-gray-900">Pricing</p>
+              </div>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-1">
+              <p href="4" type="button" class="text-white py-3 px-3">Login</p>
+              <p href="4" type="button" class="text-black py-2 px-3 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800 rounded transition duration-300">Signup</p>
+            </div>
+
+            <div class="md:hidden flex items-center">
+              <button class=" mobile-menu-button">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+
           </div>
         </div>
       </nav>
