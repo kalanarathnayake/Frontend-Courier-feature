@@ -6,8 +6,8 @@ function navbar() {
           <a href="/home" className="text-xl no-underline duration-300 text-grey-darkest hover:text-blue-dark hover:font-bold">Home</a>
         </div>
         <div className='text-lg font-light hover:text-blue-dark'>
-          <a href="/pass" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">p.Admin</a>
-          <a href="/customerPass" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">cus.Pass</a>
+          <a href="/package" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Packages</a>
+          {/* <a href="/customerPass" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">cus.Pass</a> */}
         </div>
         <div className="grid grid-cols-2 gap-1">
           <div class="flex flex-col sm:flex-row sm:text-left sm:justify-between">
