@@ -6,7 +6,6 @@ import { useHistory } from 'react-router';
 // import { Rating } from 'react-simple-star-rating'
 
 export default function ViewPackage() {
-
     const [packageId, setPackageId] = useState('');
     const [item, setItem] = useState('');
     const [category, setCategory] = useState('');
@@ -20,11 +19,7 @@ export default function ViewPackage() {
     const [lostPlace, setLostPlace] = useState('');
     const [lostDate, setLostDate] = useState('');
     const [lostTime, setLostTime] = useState('');
-
-
-
     const [id, setID] = useState(null);
-
     useEffect(() => {
         console.log("View package is" + localStorage.getItem('PackageId'));
         setID(localStorage.getItem('Id'))
@@ -41,10 +36,7 @@ export default function ViewPackage() {
         setLostPlace(localStorage.getItem('LostPlace'));
         setLostDate(localStorage.getItem('LostDate'));
         setLostTime(localStorage.getItem('LostTime'));
-      
-
         console.log("View package id" + setID(localStorage.getItem('Id')));
-
     }, []);
 
     // const updateAPIData = () => {
@@ -156,7 +148,7 @@ export default function ViewPackage() {
                                     <div class="">
                                         <p className='text-4xl font-semibold text-black uppercase'>View Package</p>
                                         <p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Package Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Package Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div class="">
@@ -171,11 +163,8 @@ export default function ViewPackage() {
                                                     onChange={(e) => setPackageId(e.target.value)}
                                                 />
                                             </div>
-
-
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -201,10 +190,8 @@ export default function ViewPackage() {
                                                     onChange={(e) => setCategory(e.target.value)}
                                                 />
                                             </div>
-
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div className="">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -227,7 +214,7 @@ export default function ViewPackage() {
                                                 <input type="text"
                                                     readOnly
                                                     className="form-control"
-                                                    value={acceptedDate.substring(0,10)}
+                                                    value={acceptedDate.substring(0, 10)}
                                                     onChange={(e) => setAcceptedDate(e.target.value)}
                                                 />
                                             </div>
@@ -244,7 +231,7 @@ export default function ViewPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Customer Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Customer Details</p></div>
                                         <p />
 
                                         <div className="grid grid-cols-2 gap-4 form-group">
@@ -285,7 +272,7 @@ export default function ViewPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Loast And Found Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Loast And Found Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-2 gap-4 form-group">
 
@@ -315,9 +302,7 @@ export default function ViewPackage() {
                                             </div>
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost Date
@@ -326,7 +311,7 @@ export default function ViewPackage() {
                                                     required
                                                     readOnly
                                                     className="form-control"
-                                                    value={lostDate.substring(0,10)}
+                                                    value={lostDate.substring(0, 10)}
                                                     onChange={(e) => setLostDate(e.target.value)}
                                                 />
                                             </div>

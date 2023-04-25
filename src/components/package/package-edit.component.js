@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css"
 // import { Rating } from 'react-simple-star-rating'
 
 export default function EditPackage() {
-
     const [packageId, setPackageId] = useState('');
     const [item, setItem] = useState('');
     const [category, setCategory] = useState('');
@@ -22,11 +21,7 @@ export default function EditPackage() {
     const [lostPlace, setLostPlace] = useState('');
     const [lostDate, setLostDate] = useState('');
     const [lostTime, setLostTime] = useState('');
-
-
-
     const [id, setID] = useState(null);
-
     useEffect(() => {
         console.log("View package is" + localStorage.getItem('PackageId'));
         setID(localStorage.getItem('Id'))
@@ -43,13 +38,10 @@ export default function EditPackage() {
         setLostPlace(localStorage.getItem('LostPlace'));
         setLostDate(localStorage.getItem('LostDate'));
         setLostTime(localStorage.getItem('LostTime'));
-
         console.log("View package id" + setID(localStorage.getItem('Id')));
-
     }, []);
 
     const updateAPIData = () => {
-
         const packages = {
             packageId: packageId,
             item: item,
@@ -64,9 +56,7 @@ export default function EditPackage() {
             lostPlace: lostPlace,
             lostDate: lostDate,
             lostTime: lostTime,
-
         }
-
         console.log(packages);
         // if(course.length < 3){
         //     Swal.fire({
@@ -120,35 +110,30 @@ export default function EditPackage() {
         //     })
         // }else{
 
-        axios.put(`http://localhost:5000/package/${id}`,packages)
-        .then(res => {
-
-            console.log(res);
-
-            if (res.status = 400) {
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Successful',
-                    text: 'Package has been Updated!!',
-                    background: '#fff',
-                    showConfirmButton:false,
-                    timer: 30000
-                })
-                
-
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Error in updating!',
-                    background: '#fff',
-                    confirmButtonColor: '#333533',
-                    iconColor: '#e00404'
-                })
-            }
-        })
-    // }
+        axios.put(`http://localhost:5000/package/${id}`, packages)
+            .then(res => {
+                console.log(res);
+                if (res.status === 400) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successful',
+                        text: 'Package has been Updated!!',
+                        background: '#fff',
+                        showConfirmButton: false,
+                        timer: 30000
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error in updating!',
+                        background: '#fff',
+                        confirmButtonColor: '#333533',
+                        iconColor: '#e00404'
+                    })
+                }
+            })
+        // }
     }
 
     const handleDate = (date) => {
@@ -167,7 +152,7 @@ export default function EditPackage() {
                                     <div class="">
                                         <p className='text-4xl font-semibold text-black uppercase'>Update Package</p>
                                         <p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Package Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Package Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div class="">
@@ -176,17 +161,14 @@ export default function EditPackage() {
                                                 </label>
                                                 <input type="text"
                                                     required
-                                                   readOnly
+                                                    readOnly
                                                     className="form-control"
                                                     value={packageId}
                                                     onChange={(e) => setPackageId(e.target.value)}
                                                 />
                                             </div>
-
-
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -194,7 +176,6 @@ export default function EditPackage() {
                                                 </label>
                                                 <input type="text"
                                                     required
-                                                   
                                                     className="form-control"
                                                     value={item}
                                                     onChange={(e) => setItem(e.target.value)}
@@ -205,26 +186,22 @@ export default function EditPackage() {
                                                     Category
                                                 </label>
                                                 <select
-                                                type="text"
-                                                required
-                                                value={category}
-                                                className="form-control"
-                                                onChange={(e) => setCategory(e.target.value)}
-                                            >
-
-                                                <option>Select From Here</option>
-                                                <option>Breakable Items</option>
-                                                <option>Electronics</option>
-                                                <option>Food Items</option>
-                                                <option>Freezer Items</option>
-                                                <option>Flowers</option>
-
-                                            </select>
+                                                    type="text"
+                                                    required
+                                                    value={category}
+                                                    className="form-control"
+                                                    onChange={(e) => setCategory(e.target.value)}
+                                                >
+                                                    <option>Select From Here</option>
+                                                    <option>Breakable Items</option>
+                                                    <option>Electronics</option>
+                                                    <option>Food Items</option>
+                                                    <option>Freezer Items</option>
+                                                    <option>Flowers</option>
+                                                </select>
                                             </div>
-
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div className="">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -232,7 +209,6 @@ export default function EditPackage() {
                                                 </label>
                                                 <textarea type="text"
                                                     className="form-control"
-                                                   
                                                     value={specialNotes}
                                                     onChange={(e) => setSpecialNotes(e.target.value)}
                                                 />
@@ -245,9 +221,9 @@ export default function EditPackage() {
                                                     Accepted Date
                                                 </label>
                                                 <input type="text"
-                                                  readOnly
+                                                    readOnly
                                                     className="form-control"
-                                                    value={acceptedDate.substring(0,10)}
+                                                    value={acceptedDate.substring(0, 10)}
                                                     onChange={(e) => setAcceptedDate(e.target.value)}
                                                 />
                                             </div>
@@ -264,18 +240,14 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Customer Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Customer Details</p></div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
-
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Customer Name
                                                 </label>
                                                 <input type="text"
-                                                  
                                                     className="form-control"
                                                     value={customerName}
                                                     onChange={(e) => setcustomerName(e.target.value)}
@@ -286,7 +258,6 @@ export default function EditPackage() {
                                                     Delivery Address
                                                 </label>
                                                 <input type="text"
-                                                   
                                                     className="form-control"
                                                     value={address}
                                                     onChange={(e) => setAddress(e.target.value)}
@@ -297,7 +268,6 @@ export default function EditPackage() {
                                                     Phone Number
                                                 </label>
                                                 <input type="text"
-                                                    
                                                     className="form-control"
                                                     value={phone}
                                                     onChange={(e) => setPhone(e.target.value)}
@@ -305,28 +275,24 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Loast And Found Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Loast And Found Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost And Found
                                                 </label>
                                                 <select
-                                                type="text"
-                                                required
-                                                value={lostAndFound}
-                                                className="form-control"
-                                                onChange={(e) => setLostAndFound(e.target.value)}
-                                            >
-
-                                                <option>Select From Here</option>
-                                                <option>Lost</option>
-                                                <option>Found</option>
-                                                
-
-                                            </select>
+                                                    type="text"
+                                                    required
+                                                    value={lostAndFound}
+                                                    className="form-control"
+                                                    onChange={(e) => setLostAndFound(e.target.value)}
+                                                >
+                                                    <option>Select From Here</option>
+                                                    <option>Lost</option>
+                                                    <option>Found</option>
+                                                </select>
                                             </div>
                                             <div className="">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -334,7 +300,6 @@ export default function EditPackage() {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                   
                                                     className="form-control"
                                                     value={lostPlace}
                                                     onChange={(e) => setLostPlace(e.target.value)}
@@ -342,9 +307,7 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost Date
@@ -357,15 +320,15 @@ export default function EditPackage() {
                                                     onChange={(e) => setLostDate(e.target.value)}
                                                 /> */}
                                                 <DatePicker
-                                                            viewBox="0 0 20 40"
-                                                            // required
-                                                            dateFormat="MMMM d, yyyy"
-                                                            // selected={this.state.date}
-                                                            selected={new Date()}
-                                                            onChange = {handleDate}
-                                                            // onChange={(e) => setAcceptedDate(e.target.value)}
-                                                            // onChange={(e) => setAcceptedDate(date)}
-                                                        />
+                                                    viewBox="0 0 20 40"
+                                                    // required
+                                                    dateFormat="MMMM d, yyyy"
+                                                    // selected={this.state.date}
+                                                    selected={new Date()}
+                                                    onChange={handleDate}
+                                                // onChange={(e) => setAcceptedDate(e.target.value)}
+                                                // onChange={(e) => setAcceptedDate(date)}
+                                                />
                                             </div>
                                             <div className="">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -373,7 +336,6 @@ export default function EditPackage() {
                                                 </label>
                                                 <input
                                                     type="time"
-                                                   
                                                     className="form-control"
                                                     value={lostTime}
                                                     onChange={(e) => setLostTime(e.target.value)}
@@ -392,8 +354,8 @@ export default function EditPackage() {
                                                 />
                                             </div> */}
                                         <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Update Package" onClick={updateAPIData}/>
-                                            </div>
+                                            <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Update Package" onClick={updateAPIData} />
+                                        </div>
                                     </div>
                                 </form>
                             </div>

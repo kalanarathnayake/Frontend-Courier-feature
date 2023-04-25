@@ -5,7 +5,7 @@ function navbar() {
         <div class="max-w-6xl mx-auto px-4">
           <div class="pt-2 flex justify-between">
             <div class="flex space-x-4">
-              <div>
+              <div className="">
                 <p href="4" class="flex items-center py-3 px-2 text-white hover:text-gray-900">
                   <svg class="h-6 w-6 mr-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
@@ -13,9 +13,9 @@ function navbar() {
                   <span class="font-bold" type="button">Currier Mate</span>
                 </p>
               </div>
-              <div class="hidden md:flex items-center space-x-1">
-                <a href="/package" className="m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal">Packages</a>
-                <p type="button" href="4" class="py-3 px-3 text-white hover:text-gray-900">Pricing</p>
+              <div class="hidden pb-3 md:flex items-center space-x-1">
+                <a href="/package" className="m-2 text-white no-underline hover:animate-pulse hover:text-blue-800 hover:delay-300">Packages</a>
+                <a href="/" className="m-2 text-white no-underline hover:animate-pulse hover:text-blue-800 hover:delay-300 duration-600">Pricing</a>
               </div>
             </div>
 
