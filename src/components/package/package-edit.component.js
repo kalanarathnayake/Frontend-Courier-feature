@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { useHistory } from 'react-router';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
-import { NotificationManager } from 'react-notifications';
 
 export default function EditPackage() {
     const [packageId, setPackageId] = useState('');

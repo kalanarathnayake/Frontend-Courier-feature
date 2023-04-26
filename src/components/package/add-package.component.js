@@ -30,7 +30,6 @@ export default function AddPackage() {
 
         e.preventDefault();
 
-        const ShortUniqueId = require('short-unique-id');
         const packageId = shortid.generate();
         const packages = {
             packageId: packageId,

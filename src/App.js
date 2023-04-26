@@ -9,8 +9,6 @@ import AddPackage from './components/package/add-package.component';
 import PackageList from './components/package/package-list.component';
 import ViewPackage from './components/package/package-view.component';
 import EditPackage from './components/package/package-edit.component';
-import 'react-notifications/lib/notifications.css';
-import { NotificationContainer } from 'react-notifications';
 
 
 function App() {
