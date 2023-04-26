@@ -14,8 +14,8 @@ function navbar() {
                 </p>
               </div>
               <div class="hidden md:flex items-center space-x-1">
-                <a href="/package" className="m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal">Packages</a>
-                <a href="4" className="m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal">Pricing</a>
+                <a href="/package" className="pb-3 m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal hover:animate-pulse">Packages</a>
+                <a href="4" className="pb-3 m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal hover:animate-pulse">Pricing</a>
               </div>
             </div>
 

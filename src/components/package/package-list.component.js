@@ -144,7 +144,7 @@ export default function PackageList() {
 
     return (
         <div>
-            <div className="flex flex-col px-5 pt-2">
+            <div className="flex flex-col px-5 py-32 pt-2 scroll-m-1 scroll-smooth ">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                         <div className='items-center overflow-hidden'>
@@ -217,7 +217,7 @@ export default function PackageList() {
                                                             <td className='px-6 py-4'>{data.specialNotes}</td>
                                                             <td className='px-6 py-4'>{data.address}</td>
                                                             <td className='px-6 py-4'><span
-                                                                class="text-base inline-block whitespace-nowrap rounded-full bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{data.lostAndFound}</span></td>
+                                                                class="text-base inline-block whitespace-nowrap rounded-full min-w-max bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{data.lostAndFound}</span></td>
                                                             <td className='px-6 py-4'>
                                                                 <div class="flex justify-center">
                                                                     <div class="">

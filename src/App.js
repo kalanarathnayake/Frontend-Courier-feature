@@ -18,15 +18,15 @@ function App() {
     <div>
       <Navbar />
       <Router>
-     
-     
+
+
         <Routes>
-          <Route exact path="/nav" element={<Navbar/>} />
-          <Route exact path="/addPackage" element={<AddPackage/>} />
-          <Route exact path="/package" element={<PackageList/>} />
-          <Route exact path="/viewPackage" element={<ViewPackage/>} />
-          <Route exact path="/editPackage" element={<EditPackage/>} />
-         
+          <Route exact path="/nav" element={<Navbar />} />
+          <Route exact path="/addPackage" element={<AddPackage />} />
+          <Route exact path="/package" element={<PackageList />} />
+          <Route exact path="/viewPackage" element={<ViewPackage />} />
+          <Route exact path="/editPackage" element={<EditPackage />} />
+
         </Routes>
       </Router>
       <Footer />

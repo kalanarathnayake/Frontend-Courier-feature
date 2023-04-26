@@ -44,7 +44,7 @@ export default function EditPackage() {
 
         e.preventDefault();
 
-      
+
 
         const packages = {
             packageId: packageId,
@@ -62,7 +62,7 @@ export default function EditPackage() {
             lostTime: lostTime,
         }
         console.log(packages);
-    
+
         if (item.length <= 3) {
             Swal.fire({
                 icon: 'error',
@@ -119,42 +119,42 @@ export default function EditPackage() {
                 iconColor: '#60e004',
                 timer: 2800000
             })
-        } 
-        
-        else if (lostAndFound.length <=2 ) {
+        }
 
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Invalid Lost And Found Values',
-                    color: '#f2220f',
-                    background: '#fff',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Okay',
-                    confirmButtonColor: '#f2220f',
-                    iconColor: '#60e004',
-                    timer: 2800000
-                })
+        else if (lostAndFound.length <= 2) {
 
-            } 
-            else if (lostPlace.length <=4 ) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Invalid Lost And Found Values',
+                color: '#f2220f',
+                background: '#fff',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+                iconColor: '#60e004',
+                timer: 2800000
+            })
 
-          
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Invalid Lost Place',
-                    color: '#f2220f',
-                    background: '#fff',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Okay',
-                    confirmButtonColor: '#f2220f',
+        }
+        else if (lostPlace.length <= 4) {
 
-                    iconColor: '#60e004',
-                    timer: 2800000
-                })
 
-            } 
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Invalid Lost Place',
+                color: '#f2220f',
+                background: '#fff',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+
+        }
         else {
 
             axios.put(`http://localhost:5000/package/${id}`, packages)
@@ -176,7 +176,7 @@ export default function EditPackage() {
                             timer: 2800000
                         })
 
-                        window.location ='/package'
+                        window.location = '/package'
 
 
                     } else {
@@ -195,7 +195,7 @@ export default function EditPackage() {
 
                 })
         }
-       
+
     }
 
     const goBack = () => {
@@ -208,7 +208,7 @@ export default function EditPackage() {
     }
 
     return (
-        <div className="flex flex-col px-5 pt-2 ">
+        <div className="flex flex-col px-5 py-32 pt-2 scroll-m-1 scroll-smooth ">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div className='items-center overflow-hidden'>
