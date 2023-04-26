@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function ViewPackage() {
+
     const [packageId, setPackageId] = useState('');
     const [item, setItem] = useState('');
     const [category, setCategory] = useState('');
@@ -15,6 +16,7 @@ export default function ViewPackage() {
     const [lostDate, setLostDate] = useState('');
     const [lostTime, setLostTime] = useState('');
     const [id, setID] = useState(null);
+
     useEffect(() => {
         console.log("View package is" + localStorage.getItem('PackageId'));
         setID(localStorage.getItem('Id'))
@@ -166,7 +168,7 @@ export default function ViewPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Loast And Found Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Lost And Found Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-2 gap-4 form-group">
                                             <div className="form-group">

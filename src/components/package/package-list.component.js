@@ -32,7 +32,7 @@ export default function PackageList() {
     const onDelete = (id) => {
         axios.delete(`http://localhost:5000/package/${id}`).then(response => {
             console.log(response.status)
-            // this.refreshTable();
+          
 
             if (response.status === 200) {
                 Swal.fire({
@@ -110,7 +110,7 @@ export default function PackageList() {
         const doc = new jsPDF(orientation, unit, size);
 
         const title = "Package List Report ";
-        const headers = [["PackageID", "Item", "Category", "Special Notes", "Accepted Date", "Accepted Time", "Customer Name", "Address", "Phone Number", "Lost And Found", "Lost Place", "Lost Date", "Lost Time"]];
+        const headers = [["Package ID", "Item", "Category", "Special Notes", "Accepted Date", "Accepted Time", "Customer Name", "Address", "Phone Number", "Lost And Found", "Lost Place", "Lost Date", "Lost Time"]];
 
         const pack = APIData.map(
             data => [
@@ -203,6 +203,7 @@ export default function PackageList() {
 
 
                                     <tbody>
+                                        {/* search list */}
                                         {searchInput.length > 1 ? (
                                             filteredResults.map((data) => {
                                                 if (searchInput === data.packageId) {
