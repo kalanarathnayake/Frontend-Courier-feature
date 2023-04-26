@@ -1,6 +1,5 @@
 function navbar() {
   return (
-    
     <div>
       <nav class="bg-blue-600">
         <div class="max-w-6xl mx-auto px-4">
@@ -19,12 +18,10 @@ function navbar() {
                 <a href="4" className="pb-3 m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal hover:animate-pulse">Pricing</a>
               </div>
             </div>
-
             <div class="hidden md:flex items-center space-x-1">
               <p href="4" type="button" class="text-white py-3 px-3">Login</p>
               <p href="4" type="button" class="text-black py-2 px-3 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800 rounded transition duration-300">Signup</p>
             </div>
-
             <div class="md:hidden flex items-center">
               <button class=" mobile-menu-button">
                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,15 +29,10 @@ function navbar() {
                 </svg>
               </button>
             </div>
-
           </div>
         </div>
       </nav>
     </div>
-
-
-
-
   );
 }
 

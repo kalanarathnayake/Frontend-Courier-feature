@@ -31,11 +31,8 @@ export default function ViewPackage() {
         setLostPlace(localStorage.getItem('LostPlace'));
         setLostDate(localStorage.getItem('LostDate'));
         setLostTime(localStorage.getItem('LostTime'));
-
-
         console.log("View package id" + setID(localStorage.getItem('Id')));
     }, []);
-
 
     return (
         <div className="flex flex-col px-5 py-32 pt-2 scroll-m-1 scroll-smooth ">
@@ -133,10 +130,7 @@ export default function ViewPackage() {
                                         <p /><p />
                                         <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Customer Details</p></div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
-
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Customer Name
@@ -175,7 +169,6 @@ export default function ViewPackage() {
                                         <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Loast And Found Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost And Found
@@ -228,7 +221,6 @@ export default function ViewPackage() {
                                                 />
                                             </div>
                                         </div>
-
                                     </div>
                                 </form>
                             </div>

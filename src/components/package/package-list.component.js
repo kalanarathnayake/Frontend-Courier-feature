@@ -34,7 +34,7 @@ export default function PackageList() {
             console.log(response.status)
             // this.refreshTable();
 
-            if (response.status == 200) {
+            if (response.status === 200) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
@@ -160,19 +160,15 @@ export default function PackageList() {
                                                         Add Package
                                                     </Link></button>
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={exportPackages}>
-
                                                     Download Report Here
-
                                                 </button>
                                             </div>
-
 
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
                                                 <input
                                                     className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
                                                     type="text"
                                                     required
-
                                                     icon='search'
                                                     placeholder='Filter By Package ID'
                                                     onChange={(e) => searchItems(e.target.value)}
@@ -209,7 +205,7 @@ export default function PackageList() {
                                     <tbody>
                                         {searchInput.length > 1 ? (
                                             filteredResults.map((data) => {
-                                                if (searchInput == data.packageId) {
+                                                if (searchInput === data.packageId) {
                                                     return (
                                                         <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
                                                             <td className='px-6 py-4'>{data.packageId}</td>
@@ -222,11 +218,12 @@ export default function PackageList() {
                                                                 <div class="flex justify-center">
                                                                     <div class="">
 
-                                                                        <Link to='/viewPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
+                                                                        <Link to='/viewPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-green-700 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
                                                                             <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                                                                                 <div class="">
-                                                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                                                     </svg>
                                                                                 </div>
                                                                                 <div class="">
@@ -291,11 +288,12 @@ export default function PackageList() {
                                                             <div class="flex justify-center">
                                                                 <div class="">
 
-                                                                    <Link to='/viewPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
+                                                                    <Link to='/viewPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-green-700 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
                                                                         <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                                                                             <div class="">
-                                                                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                                                 </svg>
                                                                             </div>
                                                                             <div class="">

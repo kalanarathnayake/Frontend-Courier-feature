@@ -20,7 +20,6 @@ export default function AddPackage() {
     const [lostDate, setLostDate] = useState('');
     const [lostTime, setLostTime] = useState('');
 
-
     const handleDate = (date) => {
         setAcceptedDate(date)
         // Some logic
@@ -72,13 +71,11 @@ export default function AddPackage() {
                 showConfirmButton: true,
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#f2220f',
-
                 iconColor: '#60e004',
                 timer: 2800000
             })
         }
         else if (address.length <= 10) {
-
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -88,12 +85,10 @@ export default function AddPackage() {
                 showConfirmButton: true,
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#f2220f',
-
                 iconColor: '#60e004',
                 timer: 2800000
             })
-        } else if (phone.length != 10) {
-
+        } else if (phone.length !== 10) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -103,21 +98,16 @@ export default function AddPackage() {
                 showConfirmButton: true,
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#f2220f',
-
                 iconColor: '#60e004',
                 timer: 2800000
             })
         }
         else {
-
-
             axios.post('http://localhost:5000/package/',
                 packages,
             ).then(res => {
                 console.log(res);
-
-                if (res.status == 200) {
-
+                if (res.status === 200) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Successful',
@@ -126,14 +116,10 @@ export default function AddPackage() {
                         showConfirmButton: true,
                         confirmButtonText: 'Okay',
                         confirmButtonColor: '#0712e0',
-
                         iconColor: '#60e004',
                         timer: 2800000
                     })
-
                     // window.location = '/package'
-
-
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -143,17 +129,12 @@ export default function AddPackage() {
                         showConfirmButton: true,
                         confirmButtonText: 'Okay',
                         confirmButtonColor: '#f2220f',
-
                         iconColor: '#60e004',
                         timer: 2800000
                     })
                 }
-
             })
         }
-
-
-
     }
 
     return (
@@ -167,7 +148,6 @@ export default function AddPackage() {
                                     <div class="">
                                         <p className='text-4xl font-semibold text-black uppercase'>Add Package</p>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -216,15 +196,12 @@ export default function AddPackage() {
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
                                                     Accepted Date
                                                 </label>
-
                                                 <DatePicker
                                                     viewBox="0 0 20 40"
                                                     dateFormat="MMMM d, yyyy"
                                                     selected={new Date()}
                                                     onChange={handleDate}
                                                 />
-
-
                                             </div>
                                             <div className="">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -237,7 +214,6 @@ export default function AddPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -267,10 +243,6 @@ export default function AddPackage() {
                                                 />
                                             </div>
                                         </div>
-
-
-
-
                                         <div className="text-center align-middle form-group">
                                             <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Package" onClick={postData} />
                                         </div>
@@ -282,6 +254,5 @@ export default function AddPackage() {
                 </div>
             </div>
         </div>
-        
     )
 }

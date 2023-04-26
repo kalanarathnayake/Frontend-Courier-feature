@@ -102,7 +102,7 @@ export default function EditPackage() {
                 iconColor: '#60e004',
                 timer: 2800000
             })
-        } else if (phone.length != 10) {
+        } else if (phone.length !== 10) {
 
             Swal.fire({
                 icon: 'error',
@@ -159,7 +159,7 @@ export default function EditPackage() {
 
                     console.log(res.status);
 
-                    if (res.status == 200) {
+                    if (res.status === 200) {
 
                         Swal.fire({
                             icon: 'success',
