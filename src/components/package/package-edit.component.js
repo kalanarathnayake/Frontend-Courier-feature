@@ -7,7 +7,6 @@ import "react-datepicker/dist/react-datepicker.css"
 import { NotificationManager } from 'react-notifications';
 
 export default function EditPackage() {
-
     const [packageId, setPackageId] = useState('');
     const [item, setItem] = useState('');
     const [category, setCategory] = useState('');
@@ -21,11 +20,7 @@ export default function EditPackage() {
     const [lostPlace, setLostPlace] = useState('');
     const [lostDate, setLostDate] = useState('');
     const [lostTime, setLostTime] = useState('');
-
-
-
     const [id, setID] = useState(null);
-
     useEffect(() => {
         console.log("View package is" + localStorage.getItem('PackageId'));
         setID(localStorage.getItem('Id'))
@@ -42,9 +37,7 @@ export default function EditPackage() {
         setLostPlace(localStorage.getItem('LostPlace'));
         setLostDate(localStorage.getItem('LostDate'));
         setLostTime(localStorage.getItem('LostTime'));
-
         console.log("View package id" + setID(localStorage.getItem('Id')));
-
     }, []);
 
     const updateAPIData = (e) => {
@@ -67,9 +60,7 @@ export default function EditPackage() {
             lostPlace: lostPlace,
             lostDate: lostDate,
             lostTime: lostTime,
-
         }
-
         console.log(packages);
     
         if (item.length <= 3) {
@@ -223,7 +214,7 @@ export default function EditPackage() {
                                     <div class="">
                                         <p className='text-4xl font-semibold text-black uppercase'>Update Package</p>
                                         <p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Package Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Package Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div class="">
@@ -240,7 +231,6 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -248,7 +238,6 @@ export default function EditPackage() {
                                                 </label>
                                                 <input type="text"
                                                     required
-
                                                     className="form-control"
                                                     value={item}
                                                     onChange={(e) => setItem(e.target.value)}
@@ -271,13 +260,10 @@ export default function EditPackage() {
                                                     <option>Food Items</option>
                                                     <option>Freezer Items</option>
                                                     <option>Flowers</option>
-
                                                 </select>
                                             </div>
-
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-1 gap-4 form-group">
                                             <div className="">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -316,12 +302,9 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Customer Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Customer Details</p></div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
-
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Customer Name
@@ -354,10 +337,9 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p /><p />
-                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold text-blue uppercase'>Loast And Found Details</p></div>
+                                        <div className='grid grid-cols-1 gap-4 form-group'><p className='text-2xl font-semibold uppercase text-blue'>Loast And Found Details</p></div>
                                         <p />
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost And Found
@@ -390,9 +372,7 @@ export default function EditPackage() {
                                             </div>
                                         </div>
                                         <p />
-
                                         <div className="grid grid-cols-2 gap-4 form-group">
-
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost Date
