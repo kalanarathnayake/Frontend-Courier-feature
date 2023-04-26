@@ -1,5 +1,6 @@
 function navbar() {
   return (
+    
     <div>
       <nav class="bg-blue-600">
         <div class="max-w-6xl mx-auto px-4">
@@ -36,6 +37,10 @@ function navbar() {
         </div>
       </nav>
     </div>
+
+
+
+
   );
 }
 
