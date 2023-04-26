@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// import { Button, Checkbox, Form } from 'semantic-ui-react'
 import axios from 'axios';
 import Swal from "sweetalert2";
 import { useHistory } from 'react-router';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
-// import { Rating } from 'react-simple-star-rating'
+import { NotificationManager } from 'react-notifications';
 
 export default function EditPackage() {
     const [packageId, setPackageId] = useState('');
@@ -41,7 +40,12 @@ export default function EditPackage() {
         console.log("View package id" + setID(localStorage.getItem('Id')));
     }, []);
 
-    const updateAPIData = () => {
+    const updateAPIData = (e) => {
+
+        e.preventDefault();
+
+      
+
         const packages = {
             packageId: packageId,
             item: item,
@@ -58,82 +62,140 @@ export default function EditPackage() {
             lostTime: lostTime,
         }
         console.log(packages);
-        // if(course.length < 3){
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Attention',
-        //         text: 'Course Name is too short!!',
-        //         background: '#fff',
-        //         confirmButtonColor: '#eb4034',
-        //         confirmButton:true,
-        //         iconColor: '#60e004',
-        //         closeOnConfirm: true,
-
-        //     })
-
-        // }else if(student.length < 3){
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Attention',
-        //         text: 'Student Name is too short!!',
-        //         background: '#fff',
-        //         confirmButtonColor: '#eb4034',
-        //         confirmButton:true,
-        //         iconColor: '#60e004',
-        //         closeOnConfirm: false,
-        //         timer:2800000
-        //     })
-        // }else if(rating <= 0 || rating >5){
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Attention',
-        //         text: 'Invalid Rating Value!!',
-        //         background: '#fff',
-        //         confirmButtonColor: '#eb4034',
-        //         confirmButton:true,
-        //         iconColor: '#60e004',
-        //         closeOnConfirm: false,
-        //         timer:2800000
-        //     })
-        // }
-        // else if(feedback.length <= 5){
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Attention',
-        //         text: 'Feedback can not be shorter than 5 characters!!',
-        //         background: '#fff',
-        //         confirmButtonColor: '#eb4034',
-        //         confirmButton:true,
-        //         iconColor: '#60e004',
-        //         closeOnConfirm: false,
-        //         timer:2800000
-        //     })
-        // }else{
-
-        axios.put(`http://localhost:5000/package/${id}`, packages)
-            .then(res => {
-                console.log(res);
-                if (res.status === 400) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successful',
-                        text: 'Package has been Updated!!',
-                        background: '#fff',
-                        showConfirmButton: false,
-                        timer: 30000
-                    })
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error in updating!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#e00404'
-                    })
-                }
+    
+        if (item.length <= 3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Item length is too short',
+                color: '#f2220f',
+                background: '#fff',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+                iconColor: '#60e004',
+                timer: 2800000
             })
-        // }
+        } else if (customerName.length <= 6) {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Customer Name is too short',
+                color: '#f2220f',
+                background: '#fff',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        }
+        else if (address.length <= 10) {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Address is too short',
+                color: '#f2220f',
+                background: '#fff',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        } else if (phone.length != 10) {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Invalid Phone Number',
+                color: '#f2220f',
+                background: '#fff',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        } 
+        
+        else if (lostAndFound.length <=2 ) {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Invalid Lost And Found Values',
+                    color: '#f2220f',
+                    background: '#fff',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#f2220f',
+                    iconColor: '#60e004',
+                    timer: 2800000
+                })
+
+            } 
+            else if (lostPlace.length <=4 ) {
+
+          
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Invalid Lost Place',
+                    color: '#f2220f',
+                    background: '#fff',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#f2220f',
+
+                    iconColor: '#60e004',
+                    timer: 2800000
+                })
+
+            } 
+        else {
+
+            axios.put(`http://localhost:5000/package/${id}`, packages)
+                .then(res => {
+
+                    console.log(res.status);
+
+                    if (res.status == 200) {
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Package has been Updated!!',
+                            background: '#fff',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#0712e0',
+                            iconColor: '#60e004',
+                            timer: 2800000
+                        })
+
+                        window.location ='/package'
+
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error in updating!',
+                            background: '#fff',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#f2220f',
+                            iconColor: '#60e004',
+                            timer: 2800000
+                        })
+                    }
+
+                })
+        }
+       
     }
 
     const handleDate = (date) => {
@@ -289,9 +351,12 @@ export default function EditPackage() {
                                                     className="form-control"
                                                     onChange={(e) => setLostAndFound(e.target.value)}
                                                 >
+
                                                     <option>Select From Here</option>
                                                     <option>Lost</option>
                                                     <option>Found</option>
+
+
                                                 </select>
                                             </div>
                                             <div className="">
@@ -312,22 +377,11 @@ export default function EditPackage() {
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Lost Date
                                                 </label>
-                                                {/* <input type="text"
-                                                    required
-                                                   
-                                                    className="form-control"
-                                                    value={lostDate}
-                                                    onChange={(e) => setLostDate(e.target.value)}
-                                                /> */}
                                                 <DatePicker
                                                     viewBox="0 0 20 40"
-                                                    // required
                                                     dateFormat="MMMM d, yyyy"
-                                                    // selected={this.state.date}
                                                     selected={new Date()}
                                                     onChange={handleDate}
-                                                // onChange={(e) => setAcceptedDate(e.target.value)}
-                                                // onChange={(e) => setAcceptedDate(date)}
                                                 />
                                             </div>
                                             <div className="">
@@ -342,17 +396,7 @@ export default function EditPackage() {
                                                 />
                                             </div>
                                         </div>
-                                        {/* <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
-                                                    Amount
-                                                </label>
-                                                <input type="number"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.amount}
-                                                    onChange={this.onChangeamount}
-                                                />
-                                            </div> */}
+
                                         <div className="text-center align-middle form-group">
                                             <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Update Package" onClick={updateAPIData} />
                                         </div>

@@ -1,19 +1,12 @@
-// import React from 'react';
-// import { Table, Button, Input } from 'semantic-ui-react'
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { Modal } from "react-bootstrap";
-import ViewPackage from './package-view.component';
-
 
 export default function PackageList() {
     const [searchInput, setSearchInput] = useState('');
-    // const [id, setID] = useState('');
-    // const [show, setShow] = useState(false);
     const [filteredResults, setFilteredResults] = useState([]);
     const [APIData, setAPIData] = useState([]);
     const [packages, setPackages] = useState([]);
@@ -68,26 +61,6 @@ export default function PackageList() {
 
         })
     }
-
-    // const gotoViewOrder = (id) => {
-    //     // this.setState({
-    //     //     id: id,
-    //     //     show: true
-
-    //     // })
-    //     // console.log("LIst id is :" +id);
-    //     setID(id);
-    //     setShow(true);
-
-
-    // }
-
-    //Modal box
-    // const closeModalBoxForView = () => {
-    //     setShow(true);
-    //     // this.refreshList();
-
-    // }
 
     const setData = (data) => {
 
@@ -186,7 +159,7 @@ export default function PackageList() {
                                                     <Link className='font-semibold text-white no-underline' to={"/addPackage"}>
                                                         Add Package
                                                     </Link></button>
-                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => this.exportPackages()}>
+                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={exportPackages}>
 
                                                     Download Report Here
 
@@ -243,7 +216,8 @@ export default function PackageList() {
                                                             <td className='px-6 py-4'>{data.item}</td>
                                                             <td className='px-6 py-4'>{data.specialNotes}</td>
                                                             <td className='px-6 py-4'>{data.address}</td>
-                                                            <td className='px-6 py-4'>{data.lostAndFound}</td>
+                                                            <td className='px-6 py-4'><span
+                                                                class="text-base inline-block whitespace-nowrap rounded-full bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{data.lostAndFound}</span></td>
                                                             <td className='px-6 py-4'>
                                                                 <div class="flex justify-center">
                                                                     <div class="">
@@ -311,7 +285,8 @@ export default function PackageList() {
                                                         <td className='px-6 py-4'>{data.item}</td>
                                                         <td className='px-6 py-4'>{data.specialNotes}</td>
                                                         <td className='px-6 py-4'>{data.address}</td>
-                                                        <td className='px-6 py-4'>{data.lostAndFound}</td>
+                                                        <td className='px-6 py-4'><span
+                                                            class="text-base inline-block whitespace-nowrap rounded-full bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{data.lostAndFound}</span></td>
                                                         <td className='px-6 py-4'>
                                                             <div class="flex justify-center">
                                                                 <div class="">

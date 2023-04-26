@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { Button, Checkbox, Form } from 'semantic-ui-react'
-import axios from 'axios';
-import Swal from "sweetalert2";
-import { useHistory } from 'react-router';
-// import { Rating } from 'react-simple-star-rating'
 
 export default function ViewPackage() {
     const [packageId, setPackageId] = useState('');
@@ -39,103 +34,6 @@ export default function ViewPackage() {
         console.log("View package id" + setID(localStorage.getItem('Id')));
     }, []);
 
-    // const updateAPIData = () => {
-
-    //     const feedbacks = {
-    //         course: course,
-    //         student: student,
-    //         rating: rating,
-    //         feedback: feedback,
-    //         response:response
-    //     }
-
-    //     console.log(feedbacks);
-    //     if(course.length < 3){
-    //         Swal.fire({
-    //             icon: 'warning',
-    //             title: 'Attention',
-    //             text: 'Course Name is too short!!',
-    //             background: '#fff',
-    //             confirmButtonColor: '#eb4034',
-    //             confirmButton:true,
-    //             iconColor: '#60e004',
-    //             closeOnConfirm: true,
-
-    //         })
-
-    //     }else if(student.length < 3){
-    //         Swal.fire({
-    //             icon: 'warning',
-    //             title: 'Attention',
-    //             text: 'Student Name is too short!!',
-    //             background: '#fff',
-    //             confirmButtonColor: '#eb4034',
-    //             confirmButton:true,
-    //             iconColor: '#60e004',
-    //             closeOnConfirm: false,
-    //             timer:2800000
-    //         })
-    //     }else if(rating <= 0 || rating >5){
-    //         Swal.fire({
-    //             icon: 'warning',
-    //             title: 'Attention',
-    //             text: 'Invalid Rating Value!!',
-    //             background: '#fff',
-    //             confirmButtonColor: '#eb4034',
-    //             confirmButton:true,
-    //             iconColor: '#60e004',
-    //             closeOnConfirm: false,
-    //             timer:2800000
-    //         })
-    //     }
-    //     else if(feedback.length <= 5){
-    //         Swal.fire({
-    //             icon: 'warning',
-    //             title: 'Attention',
-    //             text: 'Feedback can not be shorter than 5 characters!!',
-    //             background: '#fff',
-    //             confirmButtonColor: '#eb4034',
-    //             confirmButton:true,
-    //             iconColor: '#60e004',
-    //             closeOnConfirm: false,
-    //             timer:2800000
-    //         })
-    //     }else{
-
-    //     axios.put(`http://localhost:5000/feedback/${id}`,feedbacks)
-    //     .then(res => {
-
-    //         console.log(res);
-
-    //         if (res.status === 200) {
-
-    //             Swal.fire({
-    //                 icon: 'success',
-    //                 title: 'Successful',
-    //                 text: 'Feedback has been Updated!!',
-    //                 background: '#fff',
-    //                 confirmButtonColor: '#333533',
-    //                 iconColor: '#60e004'
-    //             })               
-
-    //         } else {
-    //             Swal.fire({
-    //                 icon: 'error',
-    //                 title: 'Error',
-    //                 text: 'Error in updating!',
-    //                 background: '#fff',
-    //                 confirmButtonColor: '#333533',
-    //                 iconColor: '#e00404'
-    //             })
-    //         }
-    //     })
-    // }
-    // }
-
-    // const handleRating = (rate) => {
-    //     setRating(rate)
-    //     // Some logic
-    // }
 
     return (
         <div className="flex flex-col px-5 pt-2 ">
@@ -328,20 +226,7 @@ export default function ViewPackage() {
                                                 />
                                             </div>
                                         </div>
-                                        {/* <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
-                                                    Amount
-                                                </label>
-                                                <input type="number"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.amount}
-                                                    onChange={this.onChangeamount}
-                                                />
-                                            </div> */}
-                                        {/* <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Order" />
-                                            </div> */}
+
                                     </div>
                                 </form>
                             </div>
