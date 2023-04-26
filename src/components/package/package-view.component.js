@@ -31,12 +31,14 @@ export default function ViewPackage() {
         setLostPlace(localStorage.getItem('LostPlace'));
         setLostDate(localStorage.getItem('LostDate'));
         setLostTime(localStorage.getItem('LostTime'));
+
+
         console.log("View package id" + setID(localStorage.getItem('Id')));
     }, []);
 
 
     return (
-        <div className="flex flex-col px-5 pt-2 ">
+        <div className="flex flex-col px-5 py-32 pt-2 scroll-m-1 scroll-smooth ">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div className='items-center overflow-hidden'>

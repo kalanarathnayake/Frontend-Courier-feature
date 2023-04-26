@@ -13,9 +13,9 @@ function navbar() {
                   <span class="font-bold" type="button">Currier Mate</span>
                 </p>
               </div>
-              <div class="hidden pb-3 md:flex items-center space-x-1">
-                <a href="/package" className="m-2 text-white no-underline hover:animate-pulse hover:text-blue-800 hover:delay-300">Packages</a>
-                <a href="/" className="m-2 text-white no-underline hover:animate-pulse hover:text-blue-800 hover:delay-300 duration-600">Pricing</a>
+              <div class="hidden md:flex items-center space-x-1">
+                <a href="/package" className="pb-3 m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal hover:animate-pulse">Packages</a>
+                <a href="4" className="pb-3 m-2 text-white no-underline duration-300 hover:text-blue-800 hover:font-normal hover:animate-pulse">Pricing</a>
               </div>
             </div>
 
