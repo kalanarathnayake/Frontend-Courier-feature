@@ -133,7 +133,7 @@ export default function AddPackage() {
                         timer: 2800000
                     })
 
-                    window.location = '/package'
+                    // window.location = '/package'
 
 
                 } else {
@@ -247,7 +247,6 @@ export default function AddPackage() {
                                                 </label>
                                                 <input type="text"
                                                     className="form-control"
-                                                    value={customerName}
                                                     onChange={(e) => setcustomerName(e.target.value)}
                                                 />
                                             </div>
@@ -257,7 +256,6 @@ export default function AddPackage() {
                                                 </label>
                                                 <input type="text"
                                                     className="form-control"
-                                                    value={address}
                                                     onChange={(e) => setAddress(e.target.value)}
                                                 />
                                             </div>
@@ -267,7 +265,6 @@ export default function AddPackage() {
                                                 </label>
                                                 <input type="text"
                                                     className="form-control"
-                                                    value={phone}
                                                     onChange={(e) => setPhone(e.target.value)}
                                                 />
                                             </div>

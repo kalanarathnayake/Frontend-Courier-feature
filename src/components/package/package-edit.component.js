@@ -198,6 +198,10 @@ export default function EditPackage() {
        
     }
 
+    const goBack = () => {
+        window.location = "/package"
+    }
+
     const handleDate = (date) => {
         setLostDate(date)
         // Some logic
