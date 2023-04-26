@@ -29,7 +29,6 @@ export default function AddPackage() {
     const postData = (e) => {
 
         e.preventDefault();
-        const ShortUniqueId = require('short-unique-id');
         const packageId = shortid.generate();
         const packages = {
             packageId: packageId,
