@@ -1,19 +1,12 @@
-// import React from 'react';
-// import { Table, Button, Input } from 'semantic-ui-react'
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { Modal } from "react-bootstrap";
-import ViewPackage from './package-view.component';
-
 
 export default function PackageList() {
     const [searchInput, setSearchInput] = useState('');
-    // const [id, setID] = useState('');
-    // const [show, setShow] = useState(false);
     const [filteredResults, setFilteredResults] = useState([]);
     const [APIData, setAPIData] = useState([]);
     const [packages, setPackages] = useState([]);
@@ -21,7 +14,7 @@ export default function PackageList() {
 
     useEffect(() => {
 
-        
+
         axios.get(`http://localhost:5000/package/`)
             .then((response) => {
                 setAPIData(response.data);
@@ -69,29 +62,9 @@ export default function PackageList() {
         })
     }
 
-    // const gotoViewOrder = (id) => {
-    //     // this.setState({
-    //     //     id: id,
-    //     //     show: true
-
-    //     // })
-    //     // console.log("LIst id is :" +id);
-    //     setID(id);
-    //     setShow(true);
-
-
-    // }
-
-    //Modal box
-    // const closeModalBoxForView = () => {
-    //     setShow(true);
-    //     // this.refreshList();
-       
-    // }
-
     const setData = (data) => {
 
-        let { _id, packageId, item, category, specialNotes,acceptedDate,acceptedTime,customerName,address,phone,lostAndFound,lostPlace,lostDate,lostTime } = data;
+        let { _id, packageId, item, category, specialNotes, acceptedDate, acceptedTime, customerName, address, phone, lostAndFound, lostPlace, lostDate, lostTime } = data;
 
         localStorage.setItem('Id', _id);
         localStorage.setItem('PackageId', packageId);
@@ -111,7 +84,7 @@ export default function PackageList() {
         console.log("List data is" + localStorage.setItem('CustomerName', customerName));
     }
 
-    
+
     const searchItems = (searchValue) => {
         setSearchInput(searchValue)
         if (searchInput !== '') {
@@ -137,7 +110,7 @@ export default function PackageList() {
         const doc = new jsPDF(orientation, unit, size);
 
         const title = "Package List Report ";
-        const headers = [["PackageID", "Item", "Category", "Special Notes","Accepted Date", "Accepted Time", "Customer Name","Address", "Phone Number", "Lost And Found", "Lost Place", "Lost Date", "Lost Time"]];
+        const headers = [["PackageID", "Item", "Category", "Special Notes", "Accepted Date", "Accepted Time", "Customer Name", "Address", "Phone Number", "Lost And Found", "Lost Place", "Lost Date", "Lost Time"]];
 
         const pack = APIData.map(
             data => [
@@ -186,10 +159,10 @@ export default function PackageList() {
                                                     <Link className='font-semibold text-white no-underline' to={"/addPackage"}>
                                                         Add Package
                                                     </Link></button>
-                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => this.exportPackages()}>
-                                                  
-                                                        Download Report Here
-                                                   
+                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={exportPackages}>
+
+                                                    Download Report Here
+
                                                 </button>
                                             </div>
 
@@ -236,82 +209,84 @@ export default function PackageList() {
                                     <tbody>
                                         {searchInput.length > 1 ? (
                                             filteredResults.map((data) => {
-                                                if(searchInput == data.packageId){
-                                                return (
-                                                    <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                                                        <td className='px-6 py-4'>{data.packageId}</td>
-                                                        <td className='px-6 py-4'>{data.item}</td>
-                                                        <td className='px-6 py-4'>{data.specialNotes}</td>
-                                                        <td className='px-6 py-4'>{data.address}</td>
-                                                        <td className='px-6 py-4'>{data.lostAndFound}</td>
-                                                        <td className='px-6 py-4'>
-                                                            <div class="flex justify-center">
-                                                                <div class="">
+                                                if (searchInput == data.packageId) {
+                                                    return (
+                                                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                                                            <td className='px-6 py-4'>{data.packageId}</td>
+                                                            <td className='px-6 py-4'>{data.item}</td>
+                                                            <td className='px-6 py-4'>{data.specialNotes}</td>
+                                                            <td className='px-6 py-4'>{data.address}</td>
+                                                            <td className='px-6 py-4'><span
+                                                                class="text-base inline-block whitespace-nowrap rounded-full bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{data.lostAndFound}</span></td>
+                                                            <td className='px-6 py-4'>
+                                                                <div class="flex justify-center">
+                                                                    <div class="">
 
-                                                                    <Link to='/viewPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
-                                                                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                                                            <div class="">
-                                                                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                                                                </svg>
+                                                                        <Link to='/viewPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
+                                                                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                                                                <div class="">
+                                                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                                                    </svg>
+                                                                                </div>
+                                                                                <div class="">
+                                                                                    View
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="">
-                                                                                View
-                                                                            </div>
-                                                                        </div>
-                                                                    </button></Link>
-                                                                </div></div></td>
+                                                                        </button></Link>
+                                                                    </div></div></td>
 
-                                                                <td className='px-6 py-4'>
-                                                            <div class="flex justify-center">
-                                                                <div class="">
+                                                            <td className='px-6 py-4'>
+                                                                <div class="flex justify-center">
+                                                                    <div class="">
 
-                                                                    <Link to='/editPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
-                                                                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                                                            <div class="">
-                                                                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                                                                </svg>
+                                                                        <Link to='/editPackage'><button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => setData(data)}>
+                                                                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                                                                <div class="">
+                                                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                                                    </svg>
+                                                                                </div>
+                                                                                <div class="">
+                                                                                    Update
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="">
-                                                                                Update
-                                                                            </div>
-                                                                        </div>
-                                                                    </button></Link>
-                                                                </div></div></td>
+                                                                        </button></Link>
+                                                                    </div></div></td>
 
-                                                                <td className='px-6 py-4'>
-                                                            <div class="flex justify-center">
-                                                                <div class="">
+                                                            <td className='px-6 py-4'>
+                                                                <div class="flex justify-center">
+                                                                    <div class="">
 
-                                                                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => onDelete(data._id)}>
-                                                                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                                                            <div class="">
-                                                                                <svg class="h-5 w-5 mr-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                                                </svg>
+                                                                        <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => onDelete(data._id)}>
+                                                                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                                                                <div class="">
+                                                                                    <svg class="h-5 w-5 mr-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                                    </svg>
+                                                                                </div>
+                                                                                <div class="">
+                                                                                    Delete
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="">
-                                                                                Delete
-                                                                            </div>
-                                                                        </div>
-                                                                    </button>
-                                                                </div></div></td>
-                                                       
-                                                    </tr>
-                                                )
+                                                                        </button>
+                                                                    </div></div></td>
+
+                                                        </tr>
+                                                    )
                                                 }
                                             })
                                         ) : (
                                             APIData.map((data) => {
-                                               
+
                                                 return (
                                                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
                                                         <td className='px-6 py-4'>{data.packageId}</td>
                                                         <td className='px-6 py-4'>{data.item}</td>
                                                         <td className='px-6 py-4'>{data.specialNotes}</td>
                                                         <td className='px-6 py-4'>{data.address}</td>
-                                                        <td className='px-6 py-4'>{data.lostAndFound}</td>
+                                                        <td className='px-6 py-4'><span
+                                                            class="text-base inline-block whitespace-nowrap rounded-full bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{data.lostAndFound}</span></td>
                                                         <td className='px-6 py-4'>
                                                             <div class="flex justify-center">
                                                                 <div class="">
@@ -330,7 +305,7 @@ export default function PackageList() {
                                                                     </button></Link>
                                                                 </div></div></td>
 
-                                                                <td className='px-6 py-4'>
+                                                        <td className='px-6 py-4'>
                                                             <div class="flex justify-center">
                                                                 <div class="">
 
@@ -348,7 +323,7 @@ export default function PackageList() {
                                                                     </button></Link>
                                                                 </div></div></td>
 
-                                                                <td className='px-6 py-4'>
+                                                        <td className='px-6 py-4'>
                                                             <div class="flex justify-center">
                                                                 <div class="">
 
@@ -369,7 +344,7 @@ export default function PackageList() {
 
                                                     </tr>
                                                 )
-                                                
+
                                             })
                                         )}
                                     </tbody>
@@ -377,7 +352,7 @@ export default function PackageList() {
 
                                 </table>
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>

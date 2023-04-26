@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-// import { Button, Checkbox, Form } from 'semantic-ui-react'
-// import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
 import Swal from "sweetalert2";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 const shortid = require('shortid');
-
 
 
 export default function AddPackage() {
@@ -23,15 +20,16 @@ export default function AddPackage() {
     const [lostPlace, setLostPlace] = useState('');
     const [lostDate, setLostDate] = useState('');
     const [lostTime, setLostTime] = useState('');
-    const [checkbox, setCheckbox] = useState(false);
+
 
     const handleDate = (date) => {
         setAcceptedDate(date)
         // Some logic
     }
 
-    const postData = () => {
+    const postData = (e) => {
 
+        e.preventDefault();
         
         const ShortUniqueId = require('short-unique-id');
         const packageId = shortid.generate();
@@ -45,7 +43,7 @@ export default function AddPackage() {
             customerName: customerName,
             address: address,
             phone: phone,
-            lostAndFound: '',
+            lostAndFound: 'Secure',
             lostPlace: '',
             lostDate: '',
             lostTime: '',
@@ -53,6 +51,69 @@ export default function AddPackage() {
         }
 
         console.log(packages);
+
+        if(item.length <=3){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Item length is too short',
+                color:'#f2220f',
+                background: '#fff',
+                showConfirmButton:true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+               
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        }else if(customerName.length <=6){
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Customer Name is too short',
+                color:'#f2220f',
+                background: '#fff',
+                showConfirmButton:true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+               
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        }
+        else if(address.length <=10){
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Address is too short',
+                color:'#f2220f',
+                background: '#fff',
+                showConfirmButton:true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+               
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        }else if(phone.length != 10){
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Invalid Phone Number',
+                color:'#f2220f',
+                background: '#fff',
+                showConfirmButton:true,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#f2220f',
+               
+                iconColor: '#60e004',
+                timer: 2800000
+            })
+        }
+        else{
 
        
         axios.post('http://localhost:5000/package/',
@@ -62,21 +123,22 @@ export default function AddPackage() {
 
             console.log(res);
 
-            if (res.status = 200) {
-                // this.clearData();
+            if (res.status == 200) {
+              
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
-                    text: 'Package has been added!!Your Package ID is'+packageId,
+                    text: 'Package has been added!!Your Package ID is '+packageId,
                     background: '#fff',
                     showConfirmButton:true,
                     confirmButtonText: 'Okay',
-                    confirmButtonColor: '#333533',
+                    confirmButtonColor: '#0712e0',
                    
                     iconColor: '#60e004',
                     timer: 2800000
                 })
-
+               
+                window.location ='/package'
 
 
             } else {
@@ -85,17 +147,19 @@ export default function AddPackage() {
                     title: 'Error',
                     text: 'Error in adding!',
                     background: '#fff',
-                    confirmButtonColor: '#333533',
-                    iconColor: '#e00404',
+                    showConfirmButton:true,
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#f2220f',
+               
+                     iconColor: '#60e004',
                     timer: 2800000
                 })
 
             }
 
-
-
         })
-        // }
+    }
+
 
 
     }
@@ -122,16 +186,8 @@ export default function AddPackage() {
                                                 onChange={(e) => setItem(e.target.value)}
 
                                             />
-                                            {/* <option>Select From Here</option>
-                                                <option>Artifical Intelligence</option>
-                                                <option>Software Architecture</option>
-                                                <option>Database Structures</option>
-                                                <option>Distributed Systems</option>
-                                                <option>Mobile Application Development</option>
-                                               
-                                            </select> */}
 
-                                        </div>
+                                        </div><p/>
                                         <div className="form-group">
                                             <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Category</label>
                                             <select
@@ -161,33 +217,19 @@ export default function AddPackage() {
                                                 required
                                                 className="form-control "
                                                 onChange={(e) => setSpecialNotes(e.target.value)}
-
-                                            // Will remove the inline style if applied
                                             />
 
-                                            {/* <p className="validateMsg">{this.state.userContactError}</p> */}
-
-                                        </div>
+                                        </div><p/>
                                         <div class="">
                                             <label className='block  mb-2 text-lg font-medium text-gray-900 dark:text-white' >Accepted Date</label>
                                            
                                                         <DatePicker
                                                             viewBox="0 0 20 40"
-                                                            // required
                                                             dateFormat="MMMM d, yyyy"
-                                                            // selected={this.state.date}
                                                             selected={new Date()}
                                                             onChange = {handleDate}
-                                                            // onChange={(e) => setAcceptedDate(e.target.value)}
-                                                            // onChange={(e) => setAcceptedDate(date)}
                                                         />
                                                     
-                                                    {/* <input type="text"
-                                                required
-                                                className="form-control "
-                                                onChange={(e) => setAcceptedDate(e.target.value)}
-                                            /> */}
-                                            {/* <p className="validateMsg">{this.state.empIDError}</p> */}
                                         </div>
                                         <p/>
                                         <div class="">
@@ -198,7 +240,7 @@ export default function AddPackage() {
                                                
                                                 onChange={(e) => setAcceptedTime(e.target.value)}
                                             />
-                                            {/* <p className="validateMsg">{this.state.empIDError}</p> */}
+
                                         </div>
                                         <p/>
                                         <div class="">
@@ -208,7 +250,7 @@ export default function AddPackage() {
                                                 className="form-control "
                                                 onChange={(e) => setcustomerName(e.target.value)}
                                             />
-                                            {/* <p className="validateMsg">{this.state.empIDError}</p> */}
+
                                         </div>
                                         <p />
                                         <div class="">
@@ -218,7 +260,7 @@ export default function AddPackage() {
                                                 className="form-control "
                                                 onChange={(e) => setAddress(e.target.value)}
                                             />
-                                            {/* <p className="validateMsg">{this.state.empIDError}</p> */}
+
                                         </div>
                                         <p />
                                         <div class="">
@@ -228,7 +270,7 @@ export default function AddPackage() {
                                                 className="form-control "
                                                 onChange={(e) => setPhone(e.target.value)}
                                             />
-                                            {/* <p className="validateMsg">{this.state.empIDError}</p> */}
+
                                         </div>
                                         <p />
 
